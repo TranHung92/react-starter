@@ -5,11 +5,21 @@ module.exports = {
     './src/index.js'
   ],
   module: {
-    loaders: [{
-      test: /\.jsx?$/,
-      exclude: /node_modules/,
-      loader: 'react-hot-loader!babel-loader'
-    }]
+    loaders: [
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loader: 'react-hot-loader!babel-loader'
+      },
+      {
+        test: /\.scss$/,
+        loaders: [
+            'style',
+            'css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
+            'sass'
+        ]
+      }
+    ]
   },
   resolve: {
     extensions: ['*', '.js', '.jsx']
